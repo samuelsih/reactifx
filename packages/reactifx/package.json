@@ -1,15 +1,23 @@
 {
   "name": "reactifx",
   "version": "0.1.0",
-  "description": "React if component",
+  "description": "React conditional component",
   "keywords": [
     "conditional",
-    "else",
-    "if",
     "jsx",
-    "react"
+    "react",
+    "tsx"
   ],
   "license": "MIT",
+  "author": {
+    "name": "Samuel",
+    "email": "samuel.istnd@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samuelsih/reactifx.git",
+    "directory": "packages/reactifx"
+  },
   "files": [
     "dist"
   ],
@@ -31,8 +39,7 @@
     "fmt:check": "oxfmt --check .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "typecheck": "tsc --noEmit",
-    "prepublishOnly": "pnpm run lint && pnpm run fmt:check && pnpm run typecheck && pnpm run test && pnpm run build"
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@arethetypeswrong/core": "catalog:",

@@ -1,0 +1,63 @@
+name: Publish
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      package:
+        description: Package to publish
+        required: true
+        type: choice
+        options:
+          - reactifx
+          - babel-plugin-reactifx
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    if: github.repository == 'samuelsih/reactifx'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+
+      - name: Setup Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Resolve package
+        id: package
+        env:
+          TAG: ${{ github.event.release.tag_name }}
+          INPUT: ${{ inputs.package }}
+        run: |
+          name=$(node scripts/resolve-release-package.mjs "$TAG" "$INPUT")
+          echo "name=$name" >> "$GITHUB_OUTPUT"
+
+      - name: Build
+        env:
+          PACKAGE: ${{ steps.package.outputs.name }}
+        run: pnpm --filter "$PACKAGE" run build
+
+      - name: Publish
+        env:
+          PACKAGE: ${{ steps.package.outputs.name }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm --filter "$PACKAGE" publish --access public --provenance --no-git-checks

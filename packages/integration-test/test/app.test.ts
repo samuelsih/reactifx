@@ -50,7 +50,7 @@ describe("vite integration", () => {
     expect(bundle).toContain("!== ready")
   })
 
-  it("renders the built app in the browser", async () => {
+  it("renders the built app", async () => {
     await vi.waitFor(() => {
       expect(document.body.textContent).toContain("The plugin inlined this conditional.")
     })

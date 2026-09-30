@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [
     react(),
     babel({
-      plugins: [babelPluginReactifx({ transformIf: true })],
+      plugins: [babelPluginReactifx()],
       presets: [reactCompilerPreset()],
     }),
   ],

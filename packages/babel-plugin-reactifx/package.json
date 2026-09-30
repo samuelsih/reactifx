@@ -1,7 +1,7 @@
 {
   "name": "babel-plugin-reactifx",
   "version": "0.1.0",
-  "description": "Babel plugin that inlines reactifx's If component into conditional expressions",
+  "description": "Babel plugin that inlines reactifx's component into conditional expressions",
   "keywords": [
     "babel-plugin",
     "conditional",
@@ -10,6 +10,15 @@
     "reactifx"
   ],
   "license": "MIT",
+  "author": {
+    "name": "Samuel",
+    "email": "samuel.istnd@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samuelsih/reactifx.git",
+    "directory": "packages/babel-plugin-reactifx"
+  },
   "files": [
     "dist"
   ],
@@ -31,8 +40,7 @@
     "fmt:check": "oxfmt --check .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "typecheck": "tsc --noEmit",
-    "prepublishOnly": "pnpm run lint && pnpm run fmt:check && pnpm run typecheck && pnpm run test && pnpm run build"
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@babel/core": "catalog:",
