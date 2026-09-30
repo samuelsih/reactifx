@@ -30,7 +30,6 @@ const packages = readdirSync(packagesDir).map((entry) =>
 
 let pkg = packages.find((candidate) => candidate.name === name)
 if (!pkg && !name.startsWith("@")) {
-  // Release tags may use the unscoped name, e.g. `reactifx@0.1.0`.
   const scopedName = `${scope}${name}`
   pkg = packages.find((candidate) => candidate.name === scopedName)
   if (pkg) {
