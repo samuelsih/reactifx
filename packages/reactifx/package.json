@@ -1,11 +1,13 @@
 {
-  "name": "reactxtra",
+  "name": "reactifx",
   "version": "0.1.0",
-  "description": "React extensions and utilities",
+  "description": "React if component",
   "keywords": [
-    "hooks",
-    "react",
-    "utilities"
+    "conditional",
+    "else",
+    "if",
+    "jsx",
+    "react"
   ],
   "license": "MIT",
   "files": [
