@@ -8,6 +8,7 @@ const config: OxlintConfig = defineConfig({
     perf: "warn",
   },
   rules: {
+    "eslint/curly": ["error", "all"],
     "eslint/no-var": "error",
     "typescript/consistent-type-imports": "error",
     "typescript/no-import-type-side-effects": "error",

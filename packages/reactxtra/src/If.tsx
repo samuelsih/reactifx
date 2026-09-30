@@ -5,4 +5,5 @@ type Props = {
   children: ReactNode
 }
 
+// Renders `children` when `cond` is true.
 export const If = ({ cond: isTrue, children }: Props) => (isTrue ? children : null)
