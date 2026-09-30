@@ -16,24 +16,24 @@ const transform = (code: string, config: ReactifxConfig = {}) => {
   return result?.code?.replace(/\s+/g, " ").trim() ?? ""
 }
 
-describe("babel-plugin-reactifx", () => {
+describe("@samuelsih/babel-plugin-reactifx", () => {
   it("inlines a single child into a conditional expression", () => {
     expect(
-      transform(`import { If } from "reactifx";
+      transform(`import { If } from "@samuelsih/reactifx";
       const el = <If cond={ready}><Foo /></If>;`),
     ).toBe("const el = ready ? <Foo /> : null;")
   })
 
   it("wraps multiple children in a fragment", () => {
     expect(
-      transform(`import { If } from "reactifx";
+      transform(`import { If } from "@samuelsih/reactifx";
       const el = <If cond={ready}><Foo /><Bar /></If>;`),
     ).toBe("const el = ready ? <><Foo /><Bar /></> : null;")
   })
 
   it("inlines nested If elements", () => {
     expect(
-      transform(`import { If } from "reactifx";
+      transform(`import { If } from "@samuelsih/reactifx";
       const el = <If cond>
         <Sidebar />
         <If cond={isOpen}>Show the eyes</If>
@@ -43,14 +43,14 @@ describe("babel-plugin-reactifx", () => {
 
   it("unwraps an expression child", () => {
     expect(
-      transform(`import { If } from "reactifx";
+      transform(`import { If } from "@samuelsih/reactifx";
       const el = <If cond={ready}>{content}</If>;`),
     ).toBe("const el = ready ? content : null;")
   })
 
   it("inlines a text child inside a fragment as a string", () => {
     expect(
-      transform(`import { If } from "reactifx";
+      transform(`import { If } from "@samuelsih/reactifx";
       const Component = () => (
         <>
           <If cond={1 === 1}>
@@ -63,7 +63,7 @@ describe("babel-plugin-reactifx", () => {
 
   it("normalizes multiline text children", () => {
     expect(
-      transform(`import { If } from "reactifx";
+      transform(`import { If } from "@samuelsih/reactifx";
       const el = <If cond={ready}>
         Hello
       </If>;`),
@@ -72,14 +72,14 @@ describe("babel-plugin-reactifx", () => {
 
   it("supports the cond shorthand", () => {
     expect(
-      transform(`import { If } from "reactifx";
+      transform(`import { If } from "@samuelsih/reactifx";
       const el = <If cond><Foo /></If>;`),
     ).toBe("const el = true ? <Foo /> : null;")
   })
 
   it("supports aliased imports", () => {
     expect(
-      transform(`import { If as Conditional } from "reactifx";
+      transform(`import { If as Conditional } from "@samuelsih/reactifx";
       const el = <Conditional cond={ready}><Foo /></Conditional>;`),
     ).toBe("const el = ready ? <Foo /> : null;")
   })
@@ -87,7 +87,7 @@ describe("babel-plugin-reactifx", () => {
   it("inlines If when transformIf is true", () => {
     expect(
       transform(
-        `import { If } from "reactifx";
+        `import { If } from "@samuelsih/reactifx";
       const el = <If cond={ready}><Foo /></If>;`,
         { transformIf: true },
       ),
@@ -97,19 +97,21 @@ describe("babel-plugin-reactifx", () => {
   it("leaves If alone when transformIf is disabled", () => {
     expect(
       transform(
-        `import { If } from "reactifx";
+        `import { If } from "@samuelsih/reactifx";
       const el = <If cond={ready}><Foo /></If>;`,
         { transformIf: false },
       ),
-    ).toBe('import { If } from "reactifx"; const el = <If cond={ready}><Foo /></If>;')
+    ).toBe('import { If } from "@samuelsih/reactifx"; const el = <If cond={ready}><Foo /></If>;')
   })
 
   it("keeps the import when If is still referenced", () => {
     expect(
-      transform(`import { If } from "reactifx";
+      transform(`import { If } from "@samuelsih/reactifx";
       const C = If;
       const el = <If cond={ready}><Foo /></If>;`),
-    ).toBe('import { If } from "reactifx"; const C = If; const el = ready ? <Foo /> : null;')
+    ).toBe(
+      'import { If } from "@samuelsih/reactifx"; const C = If; const el = ready ? <Foo /> : null;',
+    )
   })
 
   it("leaves If from other sources alone", () => {
@@ -121,8 +123,10 @@ describe("babel-plugin-reactifx", () => {
 
   it("leaves elements with extra props alone", () => {
     expect(
-      transform(`import { If } from "reactifx";
+      transform(`import { If } from "@samuelsih/reactifx";
       const el = <If cond={ready} key="a"><Foo /></If>;`),
-    ).toBe('import { If } from "reactifx"; const el = <If cond={ready} key="a"><Foo /></If>;')
+    ).toBe(
+      'import { If } from "@samuelsih/reactifx"; const el = <If cond={ready} key="a"><Foo /></If>;',
+    )
   })
 })

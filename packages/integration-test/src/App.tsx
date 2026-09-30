@@ -1,5 +1,5 @@
+import { If } from "@samuelsih/reactifx"
 import { useState } from "react"
-import { If } from "reactifx"
 
 export const App = () => {
   const [ready] = useState(true)

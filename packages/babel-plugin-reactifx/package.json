@@ -1,5 +1,5 @@
 {
-  "name": "babel-plugin-reactifx",
+  "name": "@samuelsih/babel-plugin-reactifx",
   "version": "0.1.0",
   "description": "Babel plugin that inlines reactifx's component into conditional expressions",
   "keywords": [

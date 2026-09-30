@@ -1,10 +1,10 @@
-# babel-plugin-reactifx
+# @samuelsih/babel-plugin-reactifx
 
-Compile-time counterpart to `reactifx`: inlines `<If cond>` into a plain conditional expression and drops the import.
+Compile-time counterpart to `@samuelsih/reactifx`: inlines `<If cond>` into a plain conditional expression and drops the import.
 
 ```tsx
 // before
-import { If } from "reactifx"
+import { If } from "@samuelsih/reactifx"
 
 const el = (
   <If cond={ready}>
@@ -21,8 +21,8 @@ Babel 7 or 8 is a peer dependency.
 ## Install
 
 ```sh
-pnpm add reactifx
-pnpm add -D babel-plugin-reactifx @rolldown/plugin-babel
+pnpm add @samuelsih/reactifx
+pnpm add -D @samuelsih/babel-plugin-reactifx @rolldown/plugin-babel
 ```
 
 ## Vite
@@ -33,7 +33,7 @@ Vite 8 handles JSX through Oxc, and `@vitejs/plugin-react` no longer takes a `ba
 // vite.config.ts
 import babel from "@rolldown/plugin-babel"
 import react from "@vitejs/plugin-react"
-import babelPluginReactifx from "babel-plugin-reactifx"
+import babelPluginReactifx from "@samuelsih/babel-plugin-reactifx"
 import { defineConfig } from "vite"
 
 export default defineConfig({

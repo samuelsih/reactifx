@@ -3,7 +3,7 @@ import type * as BabelTypes from "@babel/types"
 
 type Binding = NonNullable<ReturnType<NodePath<BabelTypes.Node>["scope"]["getBinding"]>>
 
-const importSource = "reactifx"
+const importSource = "@samuelsih/reactifx"
 
 export const isComponentImport = (
   t: PluginAPI["types"],

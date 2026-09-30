@@ -12,7 +12,7 @@ beforeAll(async () => {
   const appRoot = join(dirname(import.meta.filename), "..")
   const assetsDir = join(appRoot, "dist", "assets")
 
-  // Build the real app with the real vite.config.ts (react compiler + babel-plugin-reactifx).
+  // Build the real app with the real vite.config.ts (react compiler + @samuelsih/babel-plugin-reactifx).
   // Vitest runs with NODE_ENV=test, so force the production build React expects.
   const nodeEnv = process.env.NODE_ENV
   process.env.NODE_ENV = "production"

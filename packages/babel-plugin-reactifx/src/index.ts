@@ -15,7 +15,7 @@ export default function babelPluginReactifx(
 ): (api: PluginAPI) => PluginObject {
   const resolved = resolveConfig(config)
   return (api) => ({
-    name: "babel-plugin-reactifx",
+    name: "@samuelsih/babel-plugin-reactifx",
     visitor: traverse.visitors.merge(transformers.map((create) => create(api, resolved))),
   })
 }

@@ -8,7 +8,7 @@ const localsKey = Symbol("reactifxIfLocals")
 
 const importCleanup = createUnusedImportCleanup(localsKey)
 
-// Inlines `<If cond>` elements imported from `reactifx` into `cond ? children : null`.
+// Inlines `<If cond>` elements imported from `@samuelsih/reactifx` into `cond ? children : null`.
 export const ifTransformer: Transformer = (api, config) => {
   const { types: t } = api
 

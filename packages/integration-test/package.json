@@ -7,8 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "pnpm --filter reactifx --filter babel-plugin-reactifx run build && vitest run",
-    "test:watch": "pnpm --filter reactifx --filter babel-plugin-reactifx run build && vitest",
+    "test": "pnpm --filter @samuelsih/reactifx --filter @samuelsih/babel-plugin-reactifx run build && vitest run",
+    "test:watch": "pnpm --filter @samuelsih/reactifx --filter @samuelsih/babel-plugin-reactifx run build && vitest",
     "lint": "oxlint .",
     "lint:fix": "oxlint --fix .",
     "fmt": "oxfmt .",
@@ -16,19 +16,19 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@samuelsih/reactifx": "workspace:*",
     "react": "catalog:",
-    "react-dom": "catalog:",
-    "reactifx": "workspace:*"
+    "react-dom": "catalog:"
   },
   "devDependencies": {
     "@babel/core": "catalog:",
     "@rolldown/plugin-babel": "catalog:",
+    "@samuelsih/babel-plugin-reactifx": "workspace:*",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@vitejs/plugin-react": "catalog:",
     "babel-plugin-react-compiler": "catalog:",
-    "babel-plugin-reactifx": "workspace:*",
     "jsdom": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",

@@ -10,8 +10,8 @@ on:
         required: true
         type: choice
         options:
-          - reactifx
-          - babel-plugin-reactifx
+          - "@samuelsih/reactifx"
+          - "@samuelsih/babel-plugin-reactifx"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

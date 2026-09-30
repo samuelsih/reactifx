@@ -101,15 +101,15 @@ importers:
 
   packages/integration-test:
     dependencies:
+      '@samuelsih/reactifx':
+        specifier: workspace:*
+        version: link:../reactifx
       react:
         specifier: 'catalog:'
         version: 19.3.0
       react-dom:
         specifier: 'catalog:'
         version: 19.3.0(react@19.3.0)
-      reactifx:
-        specifier: workspace:*
-        version: link:../reactifx
     devDependencies:
       '@babel/core':
         specifier: 'catalog:'
@@ -117,6 +117,9 @@ importers:
       '@rolldown/plugin-babel':
         specifier: 'catalog:'
         version: 0.2.4(@babel/core@8.0.6)(@babel/runtime@7.29.7)(rolldown@1.2.9)(vite@8.3.0(@types/node@24.13.6)(yaml@2.9.1))
+      '@samuelsih/babel-plugin-reactifx':
+        specifier: workspace:*
+        version: link:../babel-plugin-reactifx
       '@types/node':
         specifier: 'catalog:'
         version: 24.13.6
@@ -132,9 +135,6 @@ importers:
       babel-plugin-react-compiler:
         specifier: 'catalog:'
         version: 1.0.0
-      babel-plugin-reactifx:
-        specifier: workspace:*
-        version: link:../babel-plugin-reactifx
       jsdom:
         specifier: 'catalog:'
         version: 30.1.1

@@ -1,11 +1,11 @@
-# reactifx
+# @samuelsih/reactifx
 
 Conditional rendering for React: `If`, `Cond`, `ElseIf`, `Else`.
 
 ## Install
 
 ```sh
-pnpm add reactifx
+pnpm add @samuelsih/reactifx
 ```
 
 React 18 or 19 is a peer dependency.
@@ -15,7 +15,7 @@ React 18 or 19 is a peer dependency.
 Renders its children when `cond` is true, otherwise nothing. Works on its own.
 
 ```tsx
-import { If } from "reactifx"
+import { If } from "@samuelsih/reactifx"
 
 function Dashboard({ isLoggedIn }: { isLoggedIn: boolean }) {
   return (
@@ -33,7 +33,7 @@ A bare `cond` is `true`.
 `Cond` renders the first branch whose `cond` is true, falling back to the `Else` branch. `ElseIf` and `Else` must be direct children of `Cond` — rendering them anywhere else throws.
 
 ```tsx
-import { Cond, Else, ElseIf, If } from "reactifx"
+import { Cond, Else, ElseIf, If } from "@samuelsih/reactifx"
 
 function Status({ loading, error }: { loading: boolean; error: string | null }) {
   return (
