@@ -3,6 +3,8 @@ packages:
 
 catalog:
   "@arethetypeswrong/core": 0.18.5
+  "@babel/core": 8.0.6
+  "@babel/types": 8.0.6
   "@testing-library/dom": 10.4.2
   "@testing-library/react": 16.3.3
   "@types/react": 19.3.0
