@@ -9,6 +9,8 @@ const fail = (message) => {
   process.exit(1)
 }
 
+const scope = "@samuelsih/"
+
 let name = input
 let version = null
 
@@ -26,7 +28,15 @@ const packages = readdirSync(packagesDir).map((entry) =>
   JSON.parse(readFileSync(join(packagesDir, entry, "package.json"), "utf8")),
 )
 
-const pkg = packages.find((candidate) => candidate.name === name)
+let pkg = packages.find((candidate) => candidate.name === name)
+if (!pkg && !name.startsWith("@")) {
+  // Release tags may use the unscoped name, e.g. `reactifx@0.1.0`.
+  const scopedName = `${scope}${name}`
+  pkg = packages.find((candidate) => candidate.name === scopedName)
+  if (pkg) {
+    name = scopedName
+  }
+}
 if (!pkg) {
   fail(`Unknown package: ${name}`)
 }
