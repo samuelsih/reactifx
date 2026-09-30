@@ -1,4 +1,4 @@
-# @samuelsih/babel-plugin-reactifx
+# babel-plugin-reactifx
 
 Compile-time counterpart to `@samuelsih/reactifx`: inlines `<If cond>` into a plain conditional expression and drops the import.
 

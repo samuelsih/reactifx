@@ -1,1 +1,1 @@
-# @samuelsih/reactifx
+# reactifx

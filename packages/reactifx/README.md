@@ -1,4 +1,4 @@
-# @samuelsih/reactifx
+# reactifx
 
 Conditional rendering for React: `If`, `Cond`, `ElseIf`, `Else`.
 
