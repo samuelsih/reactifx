@@ -36,7 +36,6 @@ jobs:
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24
-          registry-url: https://registry.npmjs.org
           cache: pnpm
 
       - name: Install dependencies
@@ -59,5 +58,4 @@ jobs:
       - name: Publish
         env:
           PACKAGE: ${{ steps.package.outputs.name }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm --filter "$PACKAGE" publish --access public --provenance --no-git-checks
