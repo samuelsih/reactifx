@@ -27,6 +27,18 @@ export const ifTransformer: Transformer = (api, config) => {
         return
       }
 
+      // `<If>` directly inside `<Cond>` is a branch; inlining it here would break Cond.
+      const parentPath = path.parentPath
+      if (parentPath.isJSXElement()) {
+        const parentName = parentPath.node.openingElement.name
+        if (
+          t.isJSXIdentifier(parentName) &&
+          isComponentImport(t, path.scope.getBinding(parentName.name), "Cond")
+        ) {
+          return
+        }
+      }
+
       const { attributes } = path.node.openingElement
       const attribute = attributes[0]
 

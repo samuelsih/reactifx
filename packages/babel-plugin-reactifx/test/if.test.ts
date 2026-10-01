@@ -1,22 +1,8 @@
-import { transformSync } from "@babel/core"
 import { describe, expect, it } from "vitest"
 
-import plugin, { type ReactifxConfig } from "../src/index"
+import { transform } from "./transform"
 
-// Collapses whitespace so generated output is easy to compare.
-const transform = (code: string, config: ReactifxConfig = {}) => {
-  const result = transformSync(code, {
-    babelrc: false,
-    configFile: false,
-    filename: "file.tsx",
-    parserOpts: { plugins: ["jsx"] },
-    plugins: [plugin(config)],
-  })
-
-  return result?.code?.replace(/\s+/g, " ").trim() ?? ""
-}
-
-describe("@samuelsih/babel-plugin-reactifx", () => {
+describe("If", () => {
   it("inlines a single child into a conditional expression", () => {
     expect(
       transform(`import { If } from "@samuelsih/reactifx";

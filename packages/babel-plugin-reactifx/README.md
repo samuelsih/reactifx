@@ -1,19 +1,27 @@
 # babel-plugin-reactifx
 
-Compile-time counterpart to `@samuelsih/reactifx`: inlines `<If cond>` into a plain conditional expression and drops the import.
+Compile-time counterpart to `@samuelsih/reactifx`: inlines `<If cond>` and `<Cond>` branches into plain conditional expressions and drops the imports.
 
 ```tsx
 // before
-import { If } from "@samuelsih/reactifx"
+import { Cond, Else, ElseIf, If } from "@samuelsih/reactifx"
 
 const el = (
-  <If cond={ready}>
-    <Foo />
-  </If>
+  <Cond>
+    <If cond={loading}>
+      <Spinner />
+    </If>
+    <ElseIf cond={error}>
+      <Error />
+    </ElseIf>
+    <Else>
+      <Content />
+    </Else>
+  </Cond>
 )
 
 // after
-const el = ready ? <Foo /> : null
+const el = loading ? <Spinner /> : error ? <Error /> : <Content />
 ```
 
 Babel 7 or 8 is a peer dependency.
@@ -46,16 +54,18 @@ export default defineConfig({
 })
 ```
 
-Elements with extra props (such as `key`) are left as runtime components, and `Cond`, `ElseIf`, and `Else` are not transformed (for now).
+Elements with extra props (such as `key`) are left as runtime components. A `<Cond>` must follow the branch sequence — a leading `<If>`, any number of `<ElseIf>`, then an optional trailing `<Else>` — the plugin throws otherwise. `<If>` elements nested directly inside `<Cond>` are left untouched when their `<Cond>` is not transformed, so the runtime component keeps working.
 
 ## Config
 
 ```ts
 babelPluginReactifx({
   transformIf: true, // default
+  transformCond: true, // default
 })
 ```
 
-| Option        | Type      | Default | Description                                               |
-| ------------- | --------- | ------- | --------------------------------------------------------- |
-| `transformIf` | `boolean` | `true`  | Inline `<If cond>` elements into conditional expressions. |
+| Option          | Type      | Default | Description                                                   |
+| --------------- | --------- | ------- | ------------------------------------------------------------- |
+| `transformIf`   | `boolean` | `true`  | Inline `<If cond>` elements into conditional expressions.     |
+| `transformCond` | `boolean` | `true`  | Inline `<Cond>` branches into nested conditional expressions. |
