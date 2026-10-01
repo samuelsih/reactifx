@@ -30,7 +30,7 @@ A bare `cond` is `true`.
 
 ## `Cond`, `ElseIf`, `Else`
 
-`Cond` renders the first branch whose `cond` is true, falling back to the `Else` branch. `ElseIf` and `Else` must be direct children of `Cond` — rendering them anywhere else throws.
+`Cond` renders the first branch whose `cond` is true, falling back to the `Else` branch. Branches must be direct children of `Cond` and follow the sequence — a leading `If`, any number of `ElseIf`, then an optional trailing `Else` — any other arrangement throws.
 
 ```tsx
 import { Cond, Else, ElseIf, If } from "@samuelsih/reactifx"
