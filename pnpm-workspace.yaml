@@ -3,7 +3,7 @@ packages:
 
 catalog:
   "@arethetypeswrong/core": 0.18.5
-  "@babel/core": 8.0.6
+  "@babel/core": 8.0.7
   "@babel/types": 8.0.6
   "@rolldown/plugin-babel": 0.2.4
   "@testing-library/dom": 10.4.2
