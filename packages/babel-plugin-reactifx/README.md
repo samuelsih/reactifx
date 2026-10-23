@@ -40,8 +40,8 @@ Vite 8 handles JSX through Oxc, and `@vitejs/plugin-react` no longer takes a `ba
 ```ts
 // vite.config.ts
 import babel from "@rolldown/plugin-babel"
-import react from "@vitejs/plugin-react"
 import babelPluginReactifx from "@samuelsih/babel-plugin-reactifx"
+import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 
 export default defineConfig({
